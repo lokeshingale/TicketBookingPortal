@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title>RedBus</title>
+ </head>
+ <body bgcolor="white">
+    <h1 style="color:#6699cc"align="center">Booking</h1>
+  
+  <div style="background-color:red; height:40px; width:1045px; margin-left:130px" >
+  <h2 style="color:black;" align="center">Personal Details</h2>
+  </div>
+  <div style="background-color:#cccccc; height:700px; width:1000px; margin-left:155px">
+<form action="bookController"style="margin-left:30px" method="post"><br><br>
+<pre>
+<fieldset style="width:100px; margin-left:270px">
+<table align="center" border="0">
+<tr><td><select name="salutation" style="height:35px; width:100px">
+	<option>--Salutation--</option>
+	<option>Mr.</option>
+	<option>Ms./Mrs</option>
+	<option>Miss</option>
+</select>&nbsp;&nbsp;</td>
+<td><input type="text" name="fname" title="Please Enter First Name"placeholder="Enter first name" style="height:30px; width:250px" required/><br><br></td></tr>
+<tr><td></td><td><input type="text" name="lname" title="Please Enter Last Name"placeholder="Enter last name" style="height:30px; width:250px" required/></td></tr>
+<tr><td><h4><label>       Gender:</label></h4></td>
+<td><b><input type="radio" name="gender">Male</b>
+<b><input type="radio" name="gender">Female</b></td></tr>
+<tr><td><b><label>          DOB:</label></b></td>
+<td><input type="date" name="dob" style="height:30px; width:200px" required><br><br></td></tr>
+<tr><td><b><label>      Addrees:</label></b></td>
+<td><input type="text" name="addr" placeholder="Enter the Address" style="height:30px; width:250px" required><br><br></td></tr>
+
+ <tr><td><b><label>        State:</label></b></td><td><input name="state" list="names" style="height:30px; width:250px">
+  <datalist id="names">
+  <option>--select--</option>
+  <option>Andhra Pradesh</option>
+  <option>Arunachal Pradesh</option>
+  <option>Assam</option>
+  <option>Bihar</option>
+  <option>Chhattisgarh</option>
+<option>Goa</option>
+<option>Gujarat</option>
+<option>Haryana</option>
+<option>Himachal Pradesh</option>
+<option>Jharkhand</option>
+<option>Karnataka</option>
+<option>Kerala</option>
+<option>Madhya Pradesh</option>
+<option>Maharashtra</option>
+<option>Manipur</option>
+<option>Meghalaya</option>
+<option>Mizoram</option>
+<option>Nagaland</option>
+<option>Odisha</option>
+<option>Punjab</option>
+<option>Rajasthan</option>
+<option>Sikkim</option>
+<option>Tamil Nadu</option>
+<option>Telangana</option>
+<option>Tripura</option>
+<option>Uttarakhand</option>
+<option>Uttar Pradesh</option>
+<option>West Bengal</option>
+  </datalist></td></tr>
+
+  <tr><td><b><label>         City:</label></b></td><td><input name="city" list="city" style="height:30px; width:250px">
+  <datalist id="city">
+  <option>--select--</option>
+  <option>Akola</option>
+  <option>Nagpur</option>
+  <option>Dhule</option>
+  <option>Jalgaon</option>
+  <option>Nandurbar</option>
+<option>Nashik</option>
+<option>Pune</option>
+<option>Nanded</option>
+<option>Aurangabad</option>
+<option>Mumbai</option>
+<option>Manmad</option>
+<!--<option></option>
+<option>Madhya Pradesh</option>
+<option>Maharashtra</option>
+<option>Manipur</option>
+<option>Meghalaya</option>
+<option>Mizoram</option>
+<option>Nagaland</option>
+<option>Odisha</option>
+<option>Punjab</option>
+<option>Rajasthan</option>
+<option>Sikkim</option>
+<option>Tamil Nadu</option>
+<option>Telangana</option>
+<option>Tripura</option>
+<option>Uttarakhand</option>
+<option>Uttar Pradesh</option>
+<option>West Bengal</option>-->
+  </datalist></td></tr>
+ 
+  <tr><td><b><label>    Passenger:</label></b></td><td><input type="number" name="passenger"
+				placeholder="Enter Passenger" style="height:30px; width:250px" required/><br><br></td></tr>
+
+<tr><td><b><label>Email Address:</label></b></td><td><input type="email" name="email"
+				placeholder="Enter Email Address" style="height:30px; width:250px" required/><br><br></td></tr>
+
+<tr><td><b><label>Mobile Number:</label></b></td><td><input type="text" name="mobno"
+				placeholder="Enter mobile number" style="height:30px; width:250px" required/><br><br></td></tr>
+
+<tr><td><b><label>       Amount:</label></b></td><td><input type="number" name="amt"
+				placeholder="Enter Amount" style="height:30px; width:250px" required/><br><br></td></tr>
+
+<tr><td><input type="reset" value="Reset" style="height:30px; width:150px; background-color:#990000; color:#33ff66"></td><td>&nbsp;&nbsp;&nbsp;<input type="submit" value="Continue" style="height:30px; width:150px; background-color:#990000; color:#33ff66"></td></tr>
+</table>
+</fieldset>
+</pre>
+</form>
+  </div>
+ </body>
+</html>
