@@ -14,8 +14,8 @@ import com.nt.dto.BookingDTO;
 import com.nt.service.BookingService;
 import com.nt.service.BookingServiceImpl;
 import com.nt.vo.BookingVO;
-@WebServlet("/bookController")
-public class BookingMainController extends HttpServlet {
+@WebServlet("/register_controller")
+public class RegisterController extends HttpServlet {
 	private BookingService service;
 	@Override
 	public void init() throws ServletException {
@@ -24,51 +24,52 @@ public class BookingMainController extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-    PrintWriter pw=null;
+    System.out.println("RegisterController.doGet()");
+	PrintWriter pw=null;
     BookingVO vo=null;
     BookingDTO dto=null;
+    String result=null;
     pw=res.getWriter();
     res.setContentType("text/html");
     vo=new BookingVO();
-    RequestDispatcher rd=req.getRequestDispatcher("/headerurl");
-    rd.include(req, res);
-    vo.setSalutation(req.getParameter("salutation"));
-    vo.setFname(req.getParameter("fname"));
-    vo.setLname(req.getParameter("lname"));
+    vo.setFullname(req.getParameter("name"));
+    vo.setMothername(req.getParameter("mname"));
     vo.setGender(req.getParameter("gender"));
     vo.setDob(req.getParameter("dob"));
     vo.setAddr(req.getParameter("addr"));
-    vo.setState(req.getParameter("state"));
     vo.setCity(req.getParameter("city"));
-    vo.setPassenger(req.getParameter("passenger"));
+    vo.setState(req.getParameter("state"));
+    vo.setAadhar(req.getParameter("num"));
     vo.setEmail(req.getParameter("email"));
-    vo.setMobno(req.getParameter("mobno"));
-    vo.setAmt(req.getParameter("amt"));
+    vo.setMobno(req.getParameter("mob"));
+    vo.setIdentity(req.getParameter("identity"));
     dto=new BookingDTO();
-    dto.setSalutation(vo.getSalutation());
-    dto.setFname(vo.getFname());
-    dto.setLname(vo.getLname());
+    dto.setFullname(vo.getFullname());
+    dto.setMothername(vo.getMothername());
     dto.setGender(vo.getGender());
     dto.setDob(java.sql.Date.valueOf(vo.getDob()));
     dto.setAddr(vo.getAddr());
-    dto.setState(vo.getState());
     dto.setCity(vo.getCity());
-    dto.setPassenger(Integer.parseInt(vo.getPassenger()));
+    dto.setState(vo.getState());
+    dto.setAadhar(Long.parseLong(vo.getAadhar()));
     dto.setEmail(vo.getEmail());
     dto.setMobno(Long.parseLong(vo.getMobno()));
-    dto.setAmt(Double.parseDouble(vo.getAmt()));
-   
+    dto.setIdentity(vo.getIdentity());
+  // RequestDispatcher rd=req.getRequestDispatcher("/headerurl");
+   //rd.include(req, res);
     try {
-		 String result = service.registerBooking(dto);
-		 pw.println("<h1 style='color:red;text-align:center'>Result :: "+result+"</h1>");
+    	result= service.registerBooking(dto);
+    	 pw.println("<h1 style='color:red;text-align:center'>Result :: "+result+"</h1>");
 	 }//try
 	 catch(Exception e) {
-		 pw.println("<h1>Internal Problem ---- Try Again</h1>");
+		 pw.println("<h1>Internal Problem ---- Try Again</h1>");		
 		 e.printStackTrace();
 	 }
 	//add hyperlink
 	 pw.println("<br><br> <a href='Booking.html'>home</a>");
 	 //close stream
+	 //RequestDispatcher rd1=req.getRequestDispatcher("footer.html");
+	  // rd1.include(req, res);
 	 pw.close();
 	
 	}

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="bus.jpg">
+<style>
+.booking {
+	background-color: white;
+	color: black;
+	height: 1000px;
+	width: 1000px;
+	border: 1px solid black;
+	margin-left: 170px;
+	border-radius: 10px;
+	background-color: #cccccc;
+	margin-top: 10px;
+}
+
+.input{
+height:40px;
+width:500px;
+border-radius:8px;
+padding-left:10px;
+padding-right:10px;
+}
+.date
+{
+height:40px;
+width:200px;
+border-radius:8px;
+}
+.nav {
+	overflow: hidden;
+	background-color: red;
+}
+
+.nav a {
+	float: left;
+	font-size: 20px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+</style>
+<title>Document</title>
+</head>
+<body bgcolor="#cc9933">
+	<img src="bus.jpg" width="90px" height="50px">
+	<div class="nav">
+		<a href="HomePage.html">Home</a><a href="booking.html">Bus
+			Ticket</a>
+		<!--<a href="job.html" style="float:right; color:white; background-color:red; align:center; margin-right:10px;">Login</a>-->
+		<img src="lal.png" width="1450" height="400" alt="Natural">
+	</div>
+	<br>
+	<div class="booking">
+		<h2 style="color: #660033" align="center">Ticket Registration</h2>
+		<form action="register_controller" method="post">
+			<table align="center">
+				<tr>
+					<td>Full Name:</td>
+				</tr>
+				<td><input type="text" placeholder="Enter the Name" name="name"
+					class="input"></td>
+				</tr>
+				<tr>
+					<td>Mother Name:</td>
+				</tr>
+				<td><input type="text" placeholder="Enter the Name" name="mname"
+					class="input"></td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+				</tr>
+				<td><input type="radio" name="gender" value="Male"checked>Male<br>
+				<input type="radio" name="gender" value="Female">Female</td>
+				</tr>
+				<tr>
+					<td>Date Of Birth:</td>
+				</tr>
+				<tr>
+					<td><input type="date" name="dob" class="date">&nbsp;mm/dd/yyyy</td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="addr"
+						placeholder="Enter the Address" class="input"></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="city"
+						placeholder="Enter the city" class="input"></td>
+				</tr>
+				<tr>
+					<td>State:</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="state"
+						placeholder="Enter the state" class="input"></td>
+				</tr>
+				<tr>
+					<td>Aadhar Number:</td>
+				</tr>
+				<tr>
+					<td><input type="number" name="num" class="input"></td>
+				</tr>
+				<tr>
+					<td>Email ID:</td>
+				</tr>
+				<tr>
+					<td><input type="email" name="email" class="input"></td>
+				</tr>
+				<tr>
+					<td>Mobile Number:</td>
+				</tr>
+				<tr>
+					<td><input type="number" name="mob" class="input"></td>
+				</tr>
+				<tr>
+					<td>Choose Identity:</td>
+				</tr>
+				<tr>
+					<td><input type="file" name="identity" class="input"></td>
+				</tr>
+				<tr>
+					<td>Captcha:</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="t1"></td>
+					
+				</tr>
+				<br><br>
+				<tr>
+					<td></td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"
+						value="Register" class="date" style="background-color: #6699ff"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<br>
+	<div
+		style="background-color: brown; height: 200px; margin-bottom: 30px;"
+		align="center"></div>
+	<div
+		style="background-color: green; color: black; height: 30px; margin-bottom: 10px;">
+		<p style="color: #660033; text-align: center">Copyright of Faster
+			Ticket</p>
+	</div>
+</body>
+</html>

@@ -14,27 +14,23 @@ public BookingServiceImpl() {
 
 @Override
 	public String registerBooking(BookingDTO dto) throws Exception {
-	double cback=0.0f;
-	double tot=40/100;
-	cback=dto.getAmt()-tot;
 	BookingBO bo=new BookingBO();
-	bo.setSalutation(dto.getSalutation());
-	bo.setFname(dto.getFname());
-	bo.setLname(dto.getLname());
+	bo.setFullname(dto.getFullname());
+	bo.setMothername(dto.getMothername());
 	bo.setGender(dto.getGender());
 	bo.setDob(dto.getDob());
 	bo.setAddr(dto.getAddr());
-	bo.setState(dto.getState());
 	bo.setCity(dto.getCity());
-	bo.setPassenger(dto.getPassenger());
+	bo.setState(dto.getState());
+	bo.setAadhar(dto.getAadhar());
 	bo.setEmail(dto.getEmail());
 	bo.setMobno(dto.getMobno());
-	bo.setAmount(dto.getAmt());
-	bo.setCback(cback);
+	bo.setIdentity(dto.getIdentity());
 	int count=dao.getBooking(bo);
+	System.out.println(count);
 	if(count==0)
-		return " Seat Successfully Book......... ";
+		return " Registration Successfully Completed......... ";
 	else
-		return " Seat not Booked......... ";
+		return " Registration is not Completed......... ";
 	}
 }
