@@ -4,4 +4,12 @@
   <welcome-file-list>
     <welcome-file>HomePage.html</welcome-file>
   </welcome-file-list>
+  <filter>
+  <filter-name>check</filter-name>
+  <filter-class>com.nt.filter.TimecheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>check</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

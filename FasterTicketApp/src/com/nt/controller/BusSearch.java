@@ -1,13 +1,8 @@
 package com.nt.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.function.Supplier;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,107 +10,47 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.nt.dto.RetriveBusDto;
+import com.nt.service.BookingService;
+import com.nt.service.BookingServiceImpl;
 @WebServlet("/search")
 public class BusSearch extends HttpServlet 
 {
-private static final String GET_BUS_SQL="SELECT FSTATION, TSTATION, ARRIVALDATE, ARRIVALTIME,DISPATUREDATE,DISPATURETIME FROM BUS WHERE FSTATION=? AND TSTATION=?";
-
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+	/*private static final String GET_BUS_SQL="SELECT FSTATION, TSTATION, ARRIVALDATE, ARRIVALTIME,DISPATUREDATE,DISPATURETIME FROM BUS WHERE FSTATION=? AND TSTATION=?";
+	*/
+	private BookingService service;
+	@Override
+	public void init() throws ServletException {
+		service=new BookingServiceImpl();
+	}
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
 	{
-		PrintWriter pw=null;
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		String fstation=null;
-		String tstation=null;
-		try {
-			pw=res.getWriter();
-			res.setContentType("text/html");
+		    String fstation=null;
+		    String tstation=null;
+		    RequestDispatcher rd=null;
+		    List<RetriveBusDto> listdto=null;
 		    fstation=req.getParameter("from");
 			tstation=req.getParameter("to");
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","7875");
-			ps=con.prepareStatement(GET_BUS_SQL);
-			ps.setString(1, fstation);
-			ps.setString(2, tstation);
-			rs=ps.executeQuery();
-			if(rs.next())
-			{
-				pw.println("<b> From:</b>"+rs.getString(1)+"<br>");
-				pw.println("<b>   To:</b>"+rs.getString(2)+"<br>");
-				pw.println("<b>ArrivalDate:</b>"+rs.getDate(3)+"<br>");
-				pw.println("<b>ArrivalTime:</b>"+rs.getString(4)+"<br>");
-				pw.println("<b>DispatureDate:</b>"+rs.getDate(5)+"<br>");
-				pw.println("<b>DispatureDate:</b>"+rs.getString(6)+"<br>");
-				
-			}
-			else
-			{
-				pw.println("<b>Invalid Selection from and to </b>");
-			}
 			
-		}//try closed
-		
-		
-	    catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException ec) {
-			ec.printStackTrace();
-		}catch(IOException es) {
-			es.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				if(rs!=null)
-				{
-					rs.close();
-				}
-			}
-			catch (SQLException es)
-			{
-				es.printStackTrace();
-			}
-			try
-			{
-				if(ps!=null)
-				{
-					ps.close();
-				}
-			}
-			catch (SQLException eqe)
-			{
-				eqe.printStackTrace();
-			}
-			try
-			{
-				if(con!=null)
-				{
-					con.close();
-				}
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				if(pw!=null)
-				{
-					pw.close();
-				}
-			}
-			catch (Exception io)
-			{
-				io.printStackTrace();
-			}
-		}
-		
+		    	try {
+					listdto=service.displayBus(fstation, tstation);
+					req.setAttribute("listdto", listdto);
+					rd=req.getRequestDispatcher("/all_buses.jsp");
+					rd.forward(req, res);
+		    	}
+		    	catch(SQLException e) {
+		    		e.printStackTrace();
+		    	}
+		    	catch(Exception se) {
+		    		se.printStackTrace();
+		    	}
+			
+				
 	}
 	@Override
-		public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+		public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
 	{
-			doPost(req, res);
+			doGet(req, res);
 	}
 }

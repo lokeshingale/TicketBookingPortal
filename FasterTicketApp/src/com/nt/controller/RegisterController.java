@@ -24,7 +24,6 @@ public class RegisterController extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-    System.out.println("RegisterController.doGet()");
 	PrintWriter pw=null;
     BookingVO vo=null;
     BookingDTO dto=null;
@@ -55,8 +54,6 @@ public class RegisterController extends HttpServlet {
     dto.setEmail(vo.getEmail());
     dto.setMobno(Long.parseLong(vo.getMobno()));
     dto.setIdentity(vo.getIdentity());
-  // RequestDispatcher rd=req.getRequestDispatcher("/headerurl");
-   //rd.include(req, res);
     try {
     	result= service.registerBooking(dto);
     	 pw.println("<h1 style='color:red;text-align:center'>Result :: "+result+"</h1>");
@@ -68,8 +65,6 @@ public class RegisterController extends HttpServlet {
 	//add hyperlink
 	 pw.println("<br><br> <a href='Booking.html'>home</a>");
 	 //close stream
-	 //RequestDispatcher rd1=req.getRequestDispatcher("footer.html");
-	  // rd1.include(req, res);
 	 pw.close();
 	
 	}
